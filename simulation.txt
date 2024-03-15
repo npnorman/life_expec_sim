@@ -20,6 +20,6 @@ There will be an inital population of an animal, A1
 Rounds will be conducted by year, i.e. t = # of years since 0
 Every year, animals will form into pairs and mate to create N offspring
 When a new child is born they will start at age 0
-They will have a mutation rate equal to (parent1 + parent2)/2 + (k*tmax) where tmax is max years gained from mutation
+They will have a life expectancy equal to (parent1 + parent2)/2 + (k*tmax) where tmax is max years gained from mutation
 after all births, the death function is run, and animals are eliminated
 if an animal lives to max age, then they will die the next round
