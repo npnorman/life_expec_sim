@@ -3,12 +3,13 @@
 #March 2024
 
 import random
+from typing import List
 
 #initial population of animals
-initial_pop = 100
+initial_pop = 10
 
 #initial life expectancy in years
-initial_expec = 100
+initial_expec = 10
 
 #inital mutatation constant
 initial_mut = 0
@@ -17,7 +18,7 @@ initial_mut = 0
 t_max = 2
 
 #round count in years
-round_count = 5
+round_count = 100
 
 #amount of offspring from reproduction
 offspring = 1
@@ -46,6 +47,21 @@ class D:
         death = round(death)
         
         return death
+    
+    @staticmethod
+    def isDead(age, lmax):
+        #calculate random num 0-100
+        rand = random.randint(0, 100)
+        #calculate chance of death
+        d_chance = D.death_chance(age, lmax)
+        #if num is higher than chance of death
+        if (rand > d_chance):
+            #baby survives
+            return False
+        #else
+        else:
+            #dead
+            return True
 
 #animal object
 class Animal:
@@ -66,7 +82,7 @@ class Animal:
         nature = (p1 + p2) / 2
         years = nature + (self._mut_rate * t_max)
         #round to nearest year
-        years = round(years)
+        years = years
 
         return years
     
@@ -94,7 +110,26 @@ class Animal:
     life_expec = property(getLifeExpectancy)
     mut_rate =   property(getMutationRate)
         
+def getAvgMut(population:List[Animal]):
+    mutSum = 0
+    for ani in population:
+        mutSum += ani.mut_rate
     
+    return mutSum / len(population)
+
+def getAvgLE(population:List[Animal]):
+    leSum = 0
+    for ani in population:
+        leSum += ani.life_expec
+    
+    return leSum / len(population)
+
+def getAvgAge(population:List[Animal]):
+    ageSum = 0
+    for ani in population:
+        ageSum += ani.age
+    
+    return ageSum / len(population)
     
 #test
 if __name__ == "__main__":
