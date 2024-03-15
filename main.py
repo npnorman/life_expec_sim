@@ -6,6 +6,7 @@ from typing import List
 from setup import Animal
 from setup import D
 import setup
+import random
 
 initial_pop = setup.initial_pop
 round_count = setup.round_count
@@ -56,7 +57,7 @@ for i in range(initial_pop):
 Animal.initPopEstablished = True
 
 #run rounds (years)
-for year in range(0,round_count+1):
+for year in range(1,round_count+1):
     
     length = len(pop)
     i = 0
@@ -76,6 +77,10 @@ for year in range(0,round_count+1):
     children = len(pop) // 2
     
     ###mating
+
+    #randomly move around
+    random.shuffle(pop)
+
     length = len(pop)
     if (length % 2 != 0):
         length -= 1
