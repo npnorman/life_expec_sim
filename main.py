@@ -23,8 +23,10 @@ def customValues(initial_pop, round_count):
         #hit enter to keep default
         val = int(val)
         round_count = val
+
+    return [initial_pop, round_count]
     
-customValues(initial_pop, round_count)
+[initial_pop, round_count] = customValues(initial_pop, round_count)
 
 #show simulation variables
 print("--------------------------------------")
