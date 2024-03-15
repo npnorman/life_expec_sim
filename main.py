@@ -7,15 +7,34 @@ from setup import Animal
 from setup import D
 import setup
 
+initial_pop = setup.initial_pop
+round_count = setup.round_count
+
+def customValues(initial_pop, round_count):
+    #take in input
+    val = input(f"Initial Population (Default: {initial_pop}): ")
+    if(val != ""):
+        #hit enter to keep default
+        val = int(val)
+        initial_pop = val
+    
+    val = input(f"# of Rounds (Default: {round_count}): ")
+    if(val != ""):
+        #hit enter to keep default
+        val = int(val)
+        round_count = val
+    
+customValues(initial_pop, round_count)
+
 #show simulation variables
 print("--------------------------------------")
 print("SIMULATION STARTING WITH...")
 print("--------------------------------------")
-print(f"Intial Population:              {setup.initial_pop}")
+print(f"Intial Population:              {initial_pop}")
+print(f"Number of rounds:               {round_count}")
 print(f"Intial Life Expectancy:         {setup.initial_expec}")
 print(f"Intial Mutation Coeff:          {setup.initial_mut}")
 print(f"Max years gained from Mutation: {setup.t_max}")
-print(f"Number of rounds:               {setup.round_count}")
 print(f"Offspring per Pregnancy:        {setup.offspring}")
 print(f"Chance of death at birth:       {setup.D.d_born}%")
 print(f"Chance of death at max age:     {setup.D.d_death}%")
@@ -28,14 +47,14 @@ pop: List[Animal] = []
 #if pop is dead, dont print any longer
 isExtinct:bool = False
 
-for i in range(setup.initial_pop):
+for i in range(initial_pop):
     pop.append(Animal())
 
 #establish starter
 Animal.initPopEstablished = True
 
 #run rounds (years)
-for year in range(0,setup.round_count+1):
+for year in range(0,round_count+1):
     
     length = len(pop)
     i = 0

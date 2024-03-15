@@ -130,7 +130,7 @@ def getAvgAge(population:List[Animal]):
         ageSum += ani.age
     
     return ageSum / len(population)
-    
+
 #test
 if __name__ == "__main__":
     d = D()
